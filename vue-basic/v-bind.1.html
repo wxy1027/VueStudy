@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<!-- 删除：Ctrl+D -->
+		<!-- 格式化：Ctrl+Shift+F -->
+		<meta charset="utf-8" />
+		<title>v-bind练习</title>
+		<!-- 开发环境版本，包含了有帮助的命令行警告 -->
+		<!-- 通过CDN引入Vue.js -->
+		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	</head>
+	<body>
+		<!-- xue-app根容器 -->
+		<div id="app">
+			<img :src="image" >
+			<a v-bind:href="url">{{name}}</ a>
+		</div>
+	</body>
+	<script type="text/javascript">
+		/* 实例化一个Vue对象 */
+		var app = new Vue({
+			el: '#app',
+			data: {
+				name:'购物凶猛',
+				url:'https://book.douban.com/subject/30385026/?icn=index-latestbook-subject',
+				image:'https://img1.doubanio.com/view/subject/l/public/s29943567.jpg'
+			}
+		})
+	</script>
+</html>
