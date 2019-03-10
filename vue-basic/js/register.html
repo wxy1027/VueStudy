@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+		<link rel="stylesheet" type="text/css" href="../css/font-awesome.min.css" />
+		<title>简书注册页面练习</title>
+		<style type="text/css">
+			body {
+				background: #EEEEEE;
+			}
+
+			h1 {
+				margin-left: 30px;
+				font-size: 40px;
+				color: #FF7F50;
+			}
+
+			.container {
+				/* text-align: center; */
+				/*让div内部文字居中*/
+				background: white;
+				width: 360px;
+				height: 520px;
+				margin: auto;
+				position: absolute;
+				top: 0;
+				left: 0;
+				right: 0;
+				bottom: 0;
+
+			}
+
+			.header {
+				display: flex;
+				width: 30%;
+				height: 50px;
+				margin: 0 auto;
+				justify-content: space-between;
+				cursor: pointer;
+			
+			}
+			
+			.box{
+				width: 280px;
+				height: 150px;
+				background: #EEEEEE;
+				margin-left: 40px;
+				border-radius: 5px;
+			}
+			.row{
+				height: 50px;
+				border-bottom: 1px solid #A9A9A9;
+
+			}
+			.row1{
+				height: 50px;
+			}
+
+			.btn {
+				background: #7FFF00;
+				width: 280px;
+				height: 40px;
+				border-radius: 20px;
+				outline: none;
+				border: 1px solid #EEEEEE;
+				cursor: pointer;
+				margin-top: 20px;
+				margin-left: 40px;
+				color: white;
+			}
+
+			.message {
+				font-size: 10px;
+				text-align: center;
+				color: #A9A9A9;
+				line-height: 20px;
+			}
+			.text{
+				height: 45px;
+				border: none;
+				background: #EEEEEE;
+				outline: none;
+				font-size: 15px;
+				margin-left: 10px;
+			}
+			.image{
+				color: #A9A9A9;
+				margin-left: 10px;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="app">
+			<h1>简 书</h1>
+			<div class="container">
+				<div class="header">
+					<a href="register-infor.html" class="register">注册</a>
+					<a href="register.html" class="register">登录</a>
+				</div>
+				<div class="box">
+					<div class="row">
+						<i class="icon-user image"></i>
+						<input v-model="name" placeholder="你的昵称" class="text">
+					</div>
+					<div class="row">
+						<i class="icon-phone image"></i>
+						<input v-model="phone" placeholder="手机号" class="text">
+					</div>
+					<div class="row1">
+						<i class="icon-lock image"></i>
+						<input v-model="password" placeholder="设置密码" class="text">
+					</div>
+				</div>
+
+
+				<input type="submit" name="commit" value="登录" class="btn" @click="commit" />
+				<p class="message">点击 “登录” 即表示您同意并愿意遵守该<br>
+					<a href="http://www.jianshu.com/p/c44d171298ce">用户协议</a>
+					和 <a href="http://www.jianshu.com/p/2ov8x3">隐私政策</a> 。
+				</p>
+
+			</div>
+		</div>
+		<script type="text/javascript">
+			var app = new Vue({
+				el: '#app',
+				data: {
+					name: '',
+					phone: '',
+					password: ''
+				},
+				methods: {
+					commit: function() {
+						alert(this.name + "欢迎您");
+					}
+
+				}
+			})
+		</script>
+	</body>
+</html>

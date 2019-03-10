@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>Vue.js表单练习</title>
+		<!-- 通过CDN引入Vue.js -->
+		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+		<link rel="stylesheet" type="text/css" href="../css/font-awesome.min.css" />
+		<style type="text/css">
+			
+			.header {
+				display: flex;
+				width: 30%;
+				height: 50px;
+				margin: 0 auto;
+				justify-content: space-between;
+				cursor: pointer;
+
+			}
+
+			.body {
+
+				width: 60%;
+				height: 668px;
+				margin: 0 auto;
+				align-items: center;
+				text-align: center;
+			}
+
+			.row {
+				width: 200px;
+				height: 40px;
+				border-radius: 10px;
+				margin-left: 50px;
+				border: 1px solid #DDDDDD;
+				outline: none;
+				margin-top: 1.25rem;
+			}
+
+			.row1 {
+				margin-top: 2.5rem;
+				position: relative;
+				right: 2.8125rem;
+			}
+
+			.row2 {
+				margin-top:2.5rem;
+				position: relative;
+				right: -0.3125rem;
+			}
+
+
+			.btn {
+				width: 300px;
+				height: 50px;
+				border-radius: 10px;
+				border: 1px solid #DDDDDD;
+				outline: none;
+				background:#ff7043;
+				color: #EEEEEE;
+				margin-top: 20px;
+				cursor: pointer;
+				font-size: 20px;
+
+			}
+
+			.location {
+				width: 3.75rem;
+				height: 1.875rem;
+				position: relative;
+				right: 0.625rem;
+				margin-top: 20px;
+				border-radius: 0.625rem;
+				outline: none;
+
+			}
+
+			hr {
+				width: 60%;
+				color: #A9A9A9;
+			}
+			.register{
+				position: relative;
+				top: 20px;
+				font-size: 20px;
+				text-decoration: none;
+				
+			}
+			.foot {
+				width:500px;
+				height: 100px;
+				margin-left:620px;
+				position: relative;
+				top: -130px;
+				color: #A9A9A9;
+			}
+			.imgs{
+				margin-left: 50px;
+				cursor: pointer;
+				
+			}
+
+		</style>
+	</head>
+	<body>
+		<div id="app">
+			<div class="header">
+				<a href="register-infor.html" class="register">注册</a>
+				<a href="register.html" class="register">登录</a>
+			</div>
+			<div class="body">
+				<hr>
+				<select v-model="selected" name="location" class="location">
+					<option value="">中 国</option>
+					<option value="香港">香港</option>
+					<option value="澳门">澳门</option>
+				</select>
+				<input v-model="name" placeholder="请输入手机号" class="row" />
+				<p>密&nbsp;&nbsp;&nbsp;&nbsp;码：<input type="password" v-model="password1" placeholder="请输入密码" class="row"></p>
+				<p>确认密码:<input type="password" v-model="password2" placeholder="再次输入密码" class="row"></p>
+				<div class="row1">
+					<p>性&nbsp;&nbsp;&nbsp;&nbsp;别：
+						<input type="radio" id="male" value="male" v-model="picked">
+						<label for="male">男</label>
+						<input type="radio" id="female" value="female" v-model="picked">
+						<label for="female">女</label>
+						<input type="radio" id="screct" value="screct" v-model="picked" />
+						<label for="screct">保密</label>
+					</p>
+				</div>
+				<div class="row2">
+					<p>爱&nbsp;&nbsp;&nbsp;&nbsp;好：
+						<input type="checkbox" id="baidu" value="运动" v-model="hobby">
+						<label for="baidu">运动</label>
+						<input type="checkbox" id="google" value="听音乐" v-model="hobby">
+						<label for="google">听音乐</label>
+						<input type="checkbox" id="tencent" value="唱歌" v-model="hobby">
+						<label for="tencent">唱歌</label>
+						<input type="checkbox" id="history" value="其他" v-model="hobby">
+						<label for="tencent">其他</label>
+					</p>
+				</div>
+				<br />
+				<div class="row3">
+					<input type="checkbox" id="row3" name="checkbox" checked>
+					<label for="row3" class="ui-checkbox"></label><label for="row3">我已阅读并同意</label>
+					<a href="http://www.jianshu.com/p/c44d171298ce">《用户服务协议》</a>
+				</div>
+				<br />
+				<hr>
+				<div class="row4">
+					<input type="submit" name="commit" value="注册" class="btn" @click="commit" />
+				</div>
+
+			</div>
+			<div class="foot">
+				<p>————社交账号直接注册————</p>
+					<img src="../img/Wechat.png" class="imgs">
+					<img src="../img/qq.png" class="imgs" >
+			</div>
+		</div>
+		<script type="text/javascript">
+			var app = new Vue({
+				el: '#app',
+				data: {
+					phone: '',
+					name: '',
+					password1: '',
+					password2: '',
+					picked: 'male',
+					selected: '',
+					hobby: []
+
+				},
+				methods: {
+					commit: function() {
+						var name = this.name;
+						var password2 = this.password2;
+						var password1 = this.password1;
+						if (name=='') {
+							alert("请输入手机号");
+						} else if (password1 !== password2) {
+							alert("两次输入的密码不一致");
+						} else if (name == '' || password1 == '' || password2 == '') {
+							alert("手机号或密码为空！");
+						} else {
+							alert("注册成功！请确认你的信息\n手机号:" + name + "\n密码：" + password1 +"\n爱好：" + this.hobby);
+						}
+					}
+
+
+				}
+			})
+		</script>
+	</body>
+</html>

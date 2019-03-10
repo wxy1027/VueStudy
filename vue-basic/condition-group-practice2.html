@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>简书作品的综合练习</title>
+		<!-- 通过CDN引入Vue.js -->
+		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+		<style type="text/css">
+			.head{
+				width: 80%;
+				height: 80px;
+				display: flex;
+				margin: 0 auto;
+			}
+			.container{
+				width: 80%;
+				margin: 0 auto;
+				display: flex;
+				flex-direction: column;
+			}
+			.row{
+				width: 80%;
+				height: 130px;
+				display: flex;
+			}
+			.pic{
+				width: 80px;
+				height: 80px;
+			}
+			.pic img{
+				width: 100%;
+				height: 100%;
+				border-radius: 50%;
+			}
+			.imgs{
+				width: 100px;
+				height: 100px;
+				margin-left: 300px;
+				color: #A9A9A9;
+			}
+			.imgs img{
+				width: 30%;
+				height: 30%;
+			}
+			.box{
+				margin-left: 20px;
+				top: -10px;
+			}
+			.like{
+				margin-left: 150px;
+				color: #A9A9A9;
+				width: 100px;
+				height: 100px;
+			}
+				
+			.like img{
+				width: 30%;
+				height: 30%;
+			}
+			.nolike{
+				margin-left: 150px;
+				color:chartreuse;
+				width: 100px;
+				height: 100px;
+			}
+			.nolike img{
+				width: 30%;
+				height: 30%;
+			}
+			.mess{
+				color: #A9A9A9;
+			}
+			
+		</style>
+	</head>
+	<body>
+		<!-- vue-app的根容器 -->
+		<div id="app">
+			<div class="head">
+				<h4 class="mess">推荐作者</h4>
+				<p class="imgs">
+					<img src="img/refresh.jpg"/>换一批
+				</p>
+			</div>
+			<div class="container">
+				<div class="row" v-for="writer in writers">
+					<div class="pic"><img :src="writer.avator"  ></div>
+					<div class="box">
+						<h4>{{writer.write}}</h4>
+						<h5 class="mess">{{writer.message}}</h5>
+					</div>
+					
+					<p class="like" v-if="writer.attention" ><img src="img/right.jpg" >已关注</p>
+					<p class="nolike" v-else ><img src="img/plus.jpg" >关注</p>
+				</div>
+			</div>
+			
+		</div>
+		<script type="text/javascript">
+			/* 实例化一个Vue对象 */
+			var app = new Vue({
+				el: '#app',
+				data: {
+					show:true,
+					writers:[
+						{
+							avator:'img/book1.jpg',
+							write:'胡七筒',
+							message:'写了325K字.11K喜欢',
+							attention:true
+						},
+						{
+							avator:'img/book2.jpg',
+							write:'汪波_偶遇科学',
+							message:'写了302.1K字.1.9K喜欢',
+							attention:false
+						},
+						{
+							avator:'img/book1.jpg',
+							write:'梅拾樱',
+							message:'写了269.3K字.23.4K喜欢',
+							attention:true
+						},
+						{
+							avator:'img/book4.jpg',
+							write:'徐林Grace',
+							message:'写了677.9K字.5.5K喜欢',
+							attention:false
+						},
+						{
+							avator:'img/book2.jpg',
+							write:'行距版军',
+							message:'写了535.1K字.51.8K喜欢',
+							attention:false
+						}
+					]
+				}
+					
+				
+			})
+		</script>
+	</body>
+</html>
