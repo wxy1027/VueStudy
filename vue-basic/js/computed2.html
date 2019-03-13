@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>Vue.js computed 属性练习-计算购物车总价</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+		<!-- 通过CDN引入Vue.js -->
+		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+		<style type="text/css">
+			.container {
+				display: flex;
+				flex-direction: column;
+			}
+
+			.item {
+				display: flex;
+				border: 1px solid #7FFFD4;
+				border-radius: 0.625rem;
+				width: 90%;
+				margin: 0 auto;
+				height: 80px;
+				margin-bottom: 0.625rem;
+				/* 垂直方向居中 */
+				align-items: center;
+				/* 水平方向居中 */
+				/* justify-content: center; */
+				padding-left: 0.625rem;
+				padding-right: 0.625rem;
+			}
+
+			.item-id {
+				flex: 1 1 10%;
+				padding-left: 5px;
+			}
+			.item-ava{
+				flex: 1 1 10%;
+				
+			}
+
+			.item-name {
+				flex: 1 1 30%;
+
+			}
+
+			.item-price {
+				flex: 1 1 10%;
+				padding-left:5px;
+			}
+
+			.item-count {
+				/* display: flex; */
+				flex: 1 1 30%;
+				padding-left: 50px;
+
+			}
+			.btn1{
+				background: white;
+				border: 1px solid #EEEEEE;
+			}
+
+			.goods-count {
+				width: 15px;
+				text-align: center;
+				margin-left: -5px;
+				margin-right: -5px;
+				border: none;
+			}
+			.total{
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+			}
+			.btn{
+				width: 20%;
+				background-color: #FF5000;
+				border-radius: 10px;
+				border: none;
+				outline: none;
+				color: #FFF;
+				font-size: 16px;
+				
+			}
+			a:link{text-decoration: none; color: #333333;}
+		</style>
+	</head>
+	<body>
+		<!-- vue-app的根容器 -->
+		<div id="app">
+			<div class="container">
+				<div class="item" v-for="goods in goodsList">
+					<div class="item-id">
+						{{goods.id}}
+					</div>
+					<div class="item-ava">
+						<a v-bind:href="goods.url" ><img :src="goods.pic" width="30px" /></a>
+					</div>
+					<div class="item-name">
+						<a v-bind:href="goods.url">{{goods.name}}</a>
+					</div>
+					<div class="item-price">
+						{{goods.price}}
+					</div>
+					<div class="item-count">
+						<button type="button" @click="goods.count-=1" :disabled="goods.count==0" class="btn1">-</button>
+						<input type="text" class="goods-count" v-model="goods.count" />
+						<button type="button" @click="goods.count+=1" class="btn1">+</button>
+						<!-- <button type="button">详情</button> -->
+					</div>
+				</div>
+				<hr>
+				<div class="total">
+					<h3>总价： ￥{{totalPrice}}</h3>
+					<button type="button"  class="btn" @click="sum()">结算</button>
+				</div>
+				<div class="result" v-if="show">
+					<p>你购买了{{sum}}件商品，共花费了{{totalPrice}}</p>
+				</div>
+				
+				
+			</div>
+		</div>
+		<script type="text/javascript">
+			/* 实例化一个Vue对象 */
+			var app = new Vue({
+				el: '#app',
+				data: {
+					goodsList: [{
+							id: 1,
+							pic:'https://img.alicdn.com/imgextra/i2/2616970884/O1CN01pvNZIP1IOucAsZA7a_!!2616970884.jpg_430x430q90.jpg',
+							name: 'iPhone 8',
+							price: 6000,
+							count: 1,
+							url:'https://item.taobao.com/item.htm?spm=a230r.1.14.15.235e6715yEMgmH&id=584799309331&ns=1&abbucket=4#detail'
+						},
+						{
+							id: 2,
+							pic:'https://img.alicdn.com/imgextra/i1/2653126415/O1CN01zDJQqZ1xG7FxE83iZ_!!0-item_pic.jpg_430x430q90.jpg',
+							name: 'innisfree',
+							price: 100,
+							count: 2,
+							url:'https://detail.tmall.hk/hk/item.htm?spm=a230r.1.14.6.4bb431d1ZJCgvU&id=555700146877&cm_id=140105335569ed55e27b&abbucket=4'
+						},
+						{
+							id: 3,
+							pic:'https://img.alicdn.com/imgextra/i3/479940663/O1CN011Glh2GGL4zFDOI2_!!479940663.jpg_430x430q90.jpg',
+							name: '童装',
+							price: 320,
+							count: 1,
+							url:'https://detail.tmall.com/item.htm?id=573629498709&ali_refid=a3_430583_1006:1103281714:N:%E9%A9%AC%E5%85%8Bjenny:ee00cf98898923c727825f2636c24d75&ali_trackid=1_ee00cf98898923c727825f2636c24d75&spm=a230r.1.14.1'
+						},
+						{
+							id: 4,
+							pic:'https://img.alicdn.com/imgextra/i1/2653126415/O1CN01zDJQqZ1xG7FxE83iZ_!!0-item_pic.jpg_430x430q90.jpg',
+							name: 'innisfree',
+							price: 500,
+							count: 1,
+							url:'https://detail.tmall.hk/hk/item.htm?spm=a230r.1.14.6.4bb431d1ZJCgvU&id=555700146877&cm_id=140105335569ed55e27b&abbucket=4'
+							}
+						
+
+					],
+					show:false
+
+				},
+				methods: {
+				},
+				computed: {
+					totalPrice: function() {
+						//定义一个变量
+						var totalPrice = 0;
+						var len = this.goodsList.length;
+						for (var i = 0; i < len; i++) {
+							totalPrice += this.goodsList[i].price * this.goodsList[i].count;
+						}
+						return totalPrice;
+					},
+					sum:function(){
+						this.show = true;
+						var totalCount = 0;
+						var len = this.goodsList.length;
+						for (var i = 0; i < len; i++) {
+							totalCount += this.goodsList[i].count;
+						}
+						return totalCount;
+					}
+
+				}
+			})
+		</script>
+	</body>
+</html>
