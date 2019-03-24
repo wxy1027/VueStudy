@@ -1,0 +1,1 @@
+<template name="2dc5df4d"><view class="_view 2dc5df4d content"><view class="_view 2dc5df4d"><text class="_text 2dc5df4d title">{{name}}</text><navigator url="setting" hover-class="navigator-hover" class="_navigator 2dc5df4d"><button type="primary" class="_button 2dc5df4d">个人设置</button></navigator></view></view></template>

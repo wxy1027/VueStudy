@@ -1,0 +1,63 @@
+
+.title {
+	font-size: 36rpx;
+	color: #8f8f94;
+}
+.item {
+	height: 150rpx;
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	margin-top: 10rpx;
+}
+#row-avatar {
+	width: 130rpx;
+	height: 130rpx;
+	margin-left: 10rpx;
+	margin-top: 15rpx;
+}
+.row-center {
+	-webkit-box-flex: 1;
+	-webkit-flex: 1 1 40%;
+	    -ms-flex: 1 1 40%;
+	        flex: 1 1 40%;
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-orient: vertical;
+	-webkit-box-direction: normal;
+	-webkit-flex-direction: column;
+	    -ms-flex-direction: column;
+	        flex-direction: column;
+	border-bottom: 1rpx solid #EEEEEE;
+	margin-left: 40rpx;
+	margin-top: 30rpx;
+}
+.row-name {
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-pack: justify;
+	-webkit-justify-content: space-between;
+	    -ms-flex-pack: justify;
+	        justify-content: space-between;
+	margin-top: 10rpx;
+	font-size: 35rpx;
+}
+.row-time {
+	color: #8F8F94;
+	font-size: 25rpx;
+	margin-right: 25rpx;
+}
+.row-message {
+	color: #8F8F94;
+	font-size: 25rpx;
+	margin-top: 25rpx;
+}
+.nav{
+	margin-top: 10rpx;
+}
+
